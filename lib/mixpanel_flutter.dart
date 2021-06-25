@@ -76,12 +76,14 @@ class Mixpanel {
     }
   }
 
-  void setUseIPAddressForGeoLocation(bool loggingEnabled) {
+  void setUseIPAddressForGeoLocation(bool useIPAddressForGeoLocation) {
     if (Platform.isIOS) {
       // ignore: unnecessary_null_comparison
-      if (loggingEnabled != null) {
-        _channel.invokeMethod<void>('setUseIPAddressForGeoLocation',
-            <String, dynamic>{'useIPAddressForGeoLocation': loggingEnabled});
+      if (useIPAddressForGeoLocation != null) {
+        _channel.invokeMethod<void>(
+            'setUseIPAddressForGeoLocation', <String, dynamic>{
+          'useIPAddressForGeoLocation': useIPAddressForGeoLocation
+        });
       } else {
         developer.log(
             '`setUseIPAddressForGeoLocation` failed: useIPAddressForGeoLocation cannot be blank',
