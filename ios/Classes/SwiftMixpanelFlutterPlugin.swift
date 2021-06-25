@@ -22,6 +22,9 @@ public class SwiftMixpanelFlutterPlugin: NSObject, FlutterPlugin {
         case "setServerURL":
             handleSetServerURL(call, result: result)
             break
+        case "setUseIPAddressForGeoLocation":
+            handleSetUseIPAddressForGeoLocation(call, result: result)
+            break
         case "setLoggingEnabled":
             handleSetLoggingEnabled(call, result: result)
             break
@@ -167,6 +170,13 @@ public class SwiftMixpanelFlutterPlugin: NSObject, FlutterPlugin {
         let arguments = call.arguments as? [String: Any] ?? [String: Any]()
         let serverURL = arguments["serverURL"] as! String
         instance?.serverURL = serverURL
+        result(nil)
+    }
+
+    private func handleSetUseIPAddressForGeoLocation(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        let arguments = call.arguments as? [String: Any] ?? [String: Any]()
+        let useIPAddressForGeoLocation = arguments["useIPAddressForGeoLocation"] as! Bool
+        instance?.useIPAddressForGeoLocation = useIPAddressForGeoLocation
         result(nil)
     }
     

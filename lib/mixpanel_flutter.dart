@@ -76,6 +76,20 @@ class Mixpanel {
     }
   }
 
+  void setUseIPAddressForGeoLocation(bool loggingEnabled) {
+    if (Platform.isIOS) {
+      // ignore: unnecessary_null_comparison
+      if (loggingEnabled != null) {
+        _channel.invokeMethod<void>('setUseIPAddressForGeoLocation',
+            <String, dynamic>{'useIPAddressForGeoLocation': loggingEnabled});
+      } else {
+        developer.log(
+            '`setUseIPAddressForGeoLocation` failed: useIPAddressForGeoLocation cannot be blank',
+            name: 'Mixpanel');
+      }
+    }
+  }
+
   /// Will return true if the user has opted out from tracking.
   /// return true if user has opted out from tracking. Defaults to false.
   Future<bool?> hasOptedOutTracking() async {
