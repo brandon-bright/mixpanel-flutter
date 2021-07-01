@@ -76,6 +76,14 @@ class Mixpanel {
     }
   }
 
+  /// This allows enabling or disabling the collection of the client IP address.
+  /// With an IP address, the Mixpanel Dashboard will show you the users' city.
+  /// Defaults to true.
+  ///
+  /// - Note: This method will only work for iOS. For android, please refer to:
+  /// https://developer.mixpanel.com/docs/android
+  ///
+  /// * [useIPAddressForGeoLocation] whether to enable collection of client IP address.
   void setUseIPAddressForGeoLocation(bool useIPAddressForGeoLocation) {
     if (Platform.isIOS) {
       // ignore: unnecessary_null_comparison
